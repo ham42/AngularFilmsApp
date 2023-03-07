@@ -1,0 +1,17 @@
+<div class="container mt-2 d-flex justify-content-center">
+    <div class="card" style="width: 24rem">
+        <img src="{{film.imageSrc}}" class="card-img-top" alt="..." style="height: 400px;">
+        <div class="card-body">
+            <h3 class="card-title">{{film.name}}</h3>
+            <p class="card-text">{{film.description}}</p>
+            <p class="card-text">Rating: {{film.rating}}</p>
+            <p class="card-text">Genre: {{film.genre}}</p>
+            <p class="card-text">Release Date: {{film.releaseDate | date}}</p>
+            <p class="card-text">Country: {{film.country | titlecase}}</p>
+            <p class="card-text">Ticket Price: Rs. {{film.ticketPrice}}/-</p>
+            <a  (click)="onBackClick()" class="btn btn-danger mx-2">Back to List</a>
+            <a routerLink="/films/comments/{{filmId}}" routerLinkActive="active" class="btn btn-primary">Comments</a>
+        </div>
+    </div>
+
+</div>

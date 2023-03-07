@@ -1,0 +1,43 @@
+<div class="container mt-3">
+    <h1 class="text-primary text-center">User Registration</h1>
+    <div class="row justify-content-center">
+      <div class="col-4 mt-3 py-4 px-5 border rounded bg-light">
+  
+        <form [formGroup]="signupForm" (ngSubmit)="handleSubmit()">
+          <div class="mb-3 form">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" formControlName="fullName">
+            <label class="text-danger" *ngIf="get['fullName'].errors && get['fullName'].errors['required'] && get['fullName'].touched">This field is mandatory.</label>
+          </div>
+  
+          <div class="mb-3 form">
+            <label class="form-label">Username</label>
+            <input type="email" class="form-control" formControlName="username">
+            <label class="text-danger" *ngIf="get['username'].errors && get['username'].errors['required'] && get['username'].touched">This field is mandatory.</label>
+          </div>
+  
+          <div class="mb-3 form">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" formControlName="email">
+            <label class="text-danger" *ngIf="get['email'].errors && get['email'].errors['required'] && get['email'].touched">This field is mandatory.</label>
+            <label class="text-danger" *ngIf="get['email'].errors && get['email'].errors['email'] && get['email'].touched">Please Enter Valid Email Address.</label>
+          </div>
+  
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password">
+            <label class="text-danger" *ngIf="get['password'].errors && get['password'].errors['required'] && get['password'].touched">This field is mandatory.</label>
+          </div>
+  
+          <div class="mb-3">
+            <label class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" formControlName="confirmPassword">
+            <label class="text-danger" *ngIf="get['confirmPassword'].errors && get['confirmPassword'].errors['required'] && get['confirmPassword'].touched">This field is mandatory.</label>
+            <label class="text-danger" *ngIf="signupForm.errors?.['passwordMismatch'] && get['confirmPassword'].touched">Password does not Match.</label>
+          </div>
+          
+          <button type="submit" [class.disabled]="signupForm.invalid" class="btn btn-primary">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>

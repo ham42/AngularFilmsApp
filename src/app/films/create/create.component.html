@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <h4 class="mb-3">Create New Film</h4>
+
+    <div class="row">
+      <form [formGroup]="filmForm" (ngSubmit)="handleSubmit()" class="col-6">
+        <div class="mb-3 form">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" formControlName="name">
+          <label class="text-danger" *ngIf="get['name'].errors && get['name'].errors['required'] && get['name'].touched">This field is mandatory.</label>
+          <label class="text-danger" *ngIf="get['name'].errors && get['name'].errors['maxlength'] && get['name'].touched">Maximum length of Name is 50.</label>
+        </div>
+
+        <div class="mb-3 form">
+          <label class="form-label">Description</label>
+          <input type="text" class="form-control" formControlName="description">
+          <label class="text-danger" *ngIf="get['description'].errors && get['description'].errors['required'] && get['description'].touched">This field is mandatory.</label>
+          <label class="text-danger" *ngIf="get['description'].errors && get['description'].errors['maxlength'] && get['description'].touched">Maximum length of Description is 100.</label>
+        </div>
+
+        <div class="mb-3 form">
+          <label class="form-label">Release Date</label>
+          <input type="date" class="form-control" formControlName="releaseDate">
+          <label class="text-danger" *ngIf="get['releaseDate'].errors && get['releaseDate'].errors['required'] && get['releaseDate'].touched">This field is mandatory.</label>
+        </div>
+        
+        <div class="mb-3 form">
+          <label class="form-label">Rating</label>
+          <input type="number" class="form-control" formControlName="rating">
+          <label class="text-danger" *ngIf="get['rating'].errors && get['rating'].errors['required'] && get['rating'].touched">This field is mandatory.</label>
+          <label class="text-danger" *ngIf="get['rating'].errors && get['rating'].errors['min'] && get['rating'].touched">Rating cannot be lower than 1.</label>
+          <label class="text-danger" *ngIf="get['rating'].errors && get['rating'].errors['max'] && get['rating'].touched">Rating cannot be greater than 5.</label>
+        </div>
+
+        <div class="mb-3 form">
+          <label class="form-label">Country</label>
+          <input type="text" class="form-control" formControlName="country">
+          <label class="text-danger" *ngIf="get['country'].errors && get['country'].errors['required'] && get['country'].touched">This field is mandatory.</label>
+        </div>
+
+        <div class="mb-3 form">
+          <label class="form-label">Ticket Price</label>
+          <input type="text" class="form-control" formControlName="ticketPrice">
+          <label class="text-danger" *ngIf="get['ticketPrice'].errors && get['ticketPrice'].errors['required'] && get['ticketPrice'].touched">This field is mandatory.</label>
+          <label class="text-danger" *ngIf="get['ticketPrice'].errors && get['ticketPrice'].errors['pattern'] && get['ticketPrice'].touched">Invalid Input, Field can only contain numbers.</label>
+        </div>
+
+        <div class="mb-3 form">
+          <label class="form-label">Genre</label>
+          <select class="form-select" formControlName="genre">
+            <option class="dropdown-item">Action</option> 
+            <option class="dropdown-item">Comedy</option>
+            <option class="dropdown-item">Drama</option> 
+            <option class="dropdown-item">SciFi</option> 
+          </select>
+          <label class="text-danger" *ngIf="get['genre'].errors && get['genre'].errors['required'] && get['genre'].touched">This field is mandatory.</label>
+        </div>
+
+        <div class="mb-3 form">
+          <label class="form-label">Image</label>
+          <input type="file" accept="image/*" class="form-control" formControlName="imageFile" (change)="onFileChange($event)">
+          <label class="text-danger" *ngIf="get['imageFile'].errors && get['imageFile'].errors['required'] && get['imageFile'].touched">This field is mandatory.</label>
+        </div>
+
+        <button type="submit" [class.disabled]="filmForm.invalid" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+</div>

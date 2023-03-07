@@ -1,0 +1,13 @@
+<div class="container">
+  <div *ngFor="let c of comments" class="card my-4">
+    <div class="card-body">
+      {{c.remarks}}
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3>Post Comments</h3>
+    <input type="text" class="form-control" [(ngModel)]="remarks">
+    <button class="btn btn-primary mt-3" (click)="onClick()">Post Comment</button>
+  </div>
+</div>
